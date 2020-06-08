@@ -1,0 +1,141 @@
+<!DOCTYPE HTML>
+
+<html>
+  <head>
+    <title>Claim Your Free TI-NSpire!</title>
+  </head>
+  <body>
+    <div id="header">
+      <img src="tiLogo.png" style="height: 40px; margin: 15px">
+      <div id="contact">
+        Contact Us: <input type="tel" id="con" placeholder="Your phone number"><button onclick=phone() style="background-color: red; color: white; border-radius: 0 5px 5px 0">Submit</button>
+      </div>
+    </div>
+    <div style="background-color:red; height: 20px"></div>
+    <div id="message">
+      <h1>Congratulations!</h1><br>
+      <p id="main">Dear <b>High School Student</b>,<br><br>
+        We at Texas Instruments take pride in the learning community that our calculators
+        play such a vital role in. Our company is commited to providing resources and tools
+        for learners all over the world and promoting the education of our youth. During these
+        times, access to educational tools is highly limited, and we believe it is our obligation
+        to give back to the learning community. That is why you have been chosen to receive a
+        brand new <b>TI-NSpire&trade; CX II</b> graphing calculator.<br><br>
+        To claim your calculator fill out the form below, but do so quickly, as there are only <b>8</b>
+        calculators left to claim!<br>
+    </div>
+    <div id="form">
+        First Name: <input type="text" id="first"><br>
+        Last Name: <input type="text" id="last"><br>
+        Address: <input type="text" id="add"><br>
+        Phone Number: <input type="tel" id="tel"><br>
+        <button onclick="formSub()" id="submit" style="background-color: red; color: white; border-radius: 5px; font-size: 16px">Submit</button>
+    </div>
+    <div id="images">
+      <img src="nSpire2.jpeg" id="n2" width="400px">
+      <img src="nSpire.jpeg" id="n1" width="200px">
+    </div>
+    <div id="footer">
+      &copy; Copyright 1995-2020 Texas Instruments Incorporated
+    </div>
+    <style>
+      *{
+        margin: 0;
+      }
+      body{
+        font-family: "verdana";
+      }
+      #contact{
+        text-align: right;
+        margin: 20px;
+        position: absolute;
+        right: 0;
+        top: 6px;
+      }
+      #contact input, button{
+        font-size: 11px;
+        border: solid red 2px;
+        padding: 3px;
+        border-radius: 5px 0 0 5px;
+      }
+      #message{
+        margin: 40px;
+        width: 60vw;
+      }
+      #n1{
+        width: 200px;
+        position: absolute;
+        left: 70vw;
+        top: 150px;
+      }
+      #n2{
+        margin: 40px;
+      }
+      #form input{
+        border: solid 1px gray;
+        font-size: 16px;
+      }
+      #formImg img{
+        position
+      }
+      #footer{
+        padding: 10px;
+        background-color: red;
+        color:white;
+        text-align: center;
+      }
+      label, input{
+        margin-bottom: 5px;
+      }
+      #add{
+        width: 300px;
+      }
+      #sub{
+        background-color: red;
+        color: white;
+        border-radius: 5px;
+        font-size: 15px;
+        border: none;
+        margin: 10px;
+        padding: 10px;
+      }
+      #form{
+        margin-left: 40px;
+      }
+    </style>
+    <script>
+      var con;
+      function phone(){
+        con = document.getElementById("con").value;
+        if(con != ""){
+          document.getElementById("con").value = "Thank you!";
+        }
+      }
+      var form = document.getElementById("form");
+      var par = document.getElementById("main");
+      var fill = [false,false,false,false];
+      function formSub(){
+        formEls = form.children;
+        for (var i = 0; i < formEls.length; i++){
+          if (formEls[i].value != ""){
+            formEls[i].style.border = "solid 1px gray";
+            fill[i] = true;
+          }
+          else{
+            formEls[i].placeholder = "Required Field";
+            formEls[i].style.border = "solid 1px red";
+            fill[i] = false;
+          }
+        }
+        if (fill[0] && fill[1] && fill[2] && fill[3]){
+          par.innerHTML = "Thank you for giving us the following personal information: ";
+          form.removeChild(document.getElementById("submit"));
+          for (var i = 0; i < formEls.length; i++){
+            formEls[i].style.border = "none";
+            formEls[i].readOnly = true;
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
